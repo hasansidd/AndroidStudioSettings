@@ -1,0 +1,47 @@
+<templateSet group="Android">
+  <template name="vmfac" value="class $CLASS_NAME$Factory($params$) :&#10;    androidx.lifecycle.ViewModelProvider.NewInstanceFactory() {&#10;    override fun &lt;T : androidx.lifecycle.ViewModel?&gt; create(modelClass: Class&lt;T&gt;): T {&#10;        return $CLASS_NAME$($paramName$) as T&#10;    }&#10;}&#10;$END$" description="Creates a viewmodel factory with custom paramters" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="false" />
+    <variable name="params" expression="" defaultValue="&quot;private val &quot;" alwaysStopAt="true" />
+    <variable name="paramName" expression="groovyScript(&quot;/Users/hasansiddiqui/android/groovyscripts/lastParam.groovy&quot;, params)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
+  <template name="qlog" value="fragmentLogInBinding?.emailInput?.setText(&quot;$email$@2nd.md&quot;)&#10;fragmentLogInBinding?.passwordInput?.setText(&quot;$password$&quot;)&#10;fragmentLogInBinding?.loginButton?.performClick()" description="Quickly login using stored credentials" toReformat="false" toShortenFQNames="true">
+    <variable name="email" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="password" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN" value="true" />
+    </context>
+  </template>
+  <template name="repoi" value="private var $camel_case_type$LiveData: com.secondmdlive.com.base.StateMutableLiveData&lt;$TYPE$&gt; = com.secondmdlive.com.base.StateMutableLiveData()&#10;private var $camel_case_type$: $TYPE$? = null&#10;&#10;fun get$title_case_type$($params$): com.secondmdlive.com.base.StateMutableLiveData&lt;$TYPE$&gt; {&#10;        return if ($camel_case_type$ != null) {&#10;            $camel_case_type$LiveData.postSuccess($camel_case_type$)&#10;            $camel_case_type$LiveData&#10;        } else {&#10;            fetch$title_case_type$($paramNames$)&#10;        }&#10;    }&#10;    &#10;        fun fetch$title_case_type$($params$): com.secondmdlive.com.base.StateMutableLiveData&lt;$TYPE$&gt; {&#10;        $camel_case_type$LiveData.postLoading()&#10;        $BODY$&#10;        return $camel_case_type$LiveData&#10;    }" description="Adds a repository item" toReformat="true" toShortenFQNames="true">
+    <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="camel_case_type" expression="camelCase(title_case_type)" defaultValue="" alwaysStopAt="false" />
+    <variable name="title_case_type" expression="groovyScript(&quot;/Users/hasansiddiqui/android/groovyscripts/pluralList.groovy&quot;, TYPE)" defaultValue="" alwaysStopAt="false" />
+    <variable name="params" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="paramNames" expression="groovyScript(&quot;/Users/hasansiddiqui/android/groovyscripts/lastParam.groovy&quot;, params)" defaultValue="" alwaysStopAt="false" />
+    <variable name="BODY" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN" value="true" />
+    </context>
+  </template>
+  <template name="navto2" value="private var _navigateTo$destination$: androidx.lifecycle.MutableLiveData&lt;com.secondmdlive.com.base.SingleLiveEvent&lt;$type$&gt;&gt; = androidx.lifecycle.MutableLiveData()&#10;var navigateTo$destination$: androidx.lifecycle.LiveData&lt;com.secondmdlive.com.base.SingleLiveEvent&lt;$type$&gt;&gt; = _navigateTo$destination$" description="Create navigation live data objects in viewmodel" toReformat="true" toShortenFQNames="true">
+    <variable name="destination" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="type" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="navto" value="sealed class Navigation {&#10;$firstClass$ : Navigation()&#10;}&#10;&#10;private var _navigateTo: androidx.lifecycle.MutableLiveData&lt;com.secondmdlive.com.base.SingleLiveEvent&lt;Navigation&gt;&gt; = androidx.lifecycle.MutableLiveData()&#10;var navigateTo: androidx.lifecycle.LiveData&lt;com.secondmdlive.com.base.SingleLiveEvent&lt;Navigation&gt;&gt; = _navigateTo" description="Creates sealed class AND Create navigation live data objects in viewmodel" toReformat="true" toShortenFQNames="true">
+    <variable name="firstClass" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="vmstate" value="        viewModel?.state?.observe(viewLifecycleOwner, androidx.lifecycle.Observer { stateData -&gt;&#10;            when (stateData.status) {&#10;                com.secondmdlive.com.base.StateData.DataStatus.CREATED -&gt; {&#10;                }&#10;                com.secondmdlive.com.base.StateData.DataStatus.SUCCESS -&gt; {&#10;                    hud.dismiss()&#10;                    val model = stateData.data?: return@Observer&#10;                    &#10;                }&#10;                com.secondmdlive.com.base.StateData.DataStatus.ERROR -&gt; {&#10;                    hud.dismiss()&#10;                }&#10;                com.secondmdlive.com.base.StateData.DataStatus.LOADING -&gt; {&#10;                    hud.show()&#10;                }&#10;            }&#10;        })" description="Creates BaseViewModel state observer" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN" value="true" />
+    </context>
+  </template>
+</templateSet>
